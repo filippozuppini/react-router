@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import Footer from "../components/Footer";
-import NavBar from "../components/NavBar";
+import Layout from "../components/Layout";
 
 export default function ProductPage() {
 
@@ -22,9 +21,10 @@ export default function ProductPage() {
     return (
         <>
 
-            <NavBar></NavBar>
 
-            <main className="product-main py-5">
+            <Layout>
+
+                <main className="product-main py-5">
                 <div className="container">
                     <div className="text-center mb-5">
                         <h1 className="display-5 fw-bold">I nostri prodotti</h1>
@@ -59,8 +59,8 @@ export default function ProductPage() {
                     </div>
                 </div>
             </main>
+            </Layout>
 
-            <Footer></Footer>
 
         </>
     )
