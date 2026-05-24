@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import Footer from "../components/Footer";
+import NavBar from "../components/NavBar";
 
 export default function ProductPage() {
 
@@ -12,7 +13,6 @@ export default function ProductPage() {
 
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 setProductsData(data);
             })
     }
@@ -22,32 +22,45 @@ export default function ProductPage() {
     return (
         <>
 
-            <h1>product page</h1>
+            <NavBar></NavBar>
 
+            <main className="product-main py-5">
+                <div className="container">
+                    <div className="text-center mb-5">
+                        <h1 className="display-5 fw-bold">I nostri prodotti</h1>
+                        <p className="fs-5 text-secondary mb-0">
+                            Scopri una selezione di articoli pensati per ogni esigenza.
+                        </p>
+                    </div>
 
-            <div className="container">
-                <div className="row g-3">
-
-                    {
-                        productsData.map(product => (
-                            <div className="col-12 col-sm-6 col-md-4" key={product.id}>
-                                <div className="card">
-                                    <img className="card-img-top" src={product.image} alt="foto-profilo" />
-                                    <div className="card-body">
-                                        <h4 className="card-title">{product.title}</h4>
-                                        <p className="card-text">{product.description}</p>
-                                        <p className="card-text">{product.price}</p>
-                                        <p className="card-text">{product.category}</p>
+                    <div className="row g-4">
+                        {
+                            productsData.map(product => (
+                                <div className="col-12 col-sm-6 col-lg-4" key={product.id}>
+                                    <div className="card product-card h-100">
+                                        <img className="card-img-top product-image" src={product.image} alt={product.title} />
+                                        <div className="card-body d-flex flex-column">
+                                            <span className="text-uppercase small text-secondary fw-bold mb-2">
+                                                {product.category}
+                                            </span>
+                                            <h2 className="card-title h5 fw-bold">{product.title}</h2>
+                                            <p className="card-text text-secondary product-description">
+                                                {product.description}
+                                            </p>
+                                            
+                                            <p className="card-text fs-5 fw-bold mt-auto mb-0">
+                                                {product.price} €
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
-
-                            </div>
-                        ))
-                    }
+                            ))
+                        }
+                    </div>
                 </div>
-            </div>
+            </main>
 
-
+            <Footer></Footer>
 
         </>
     )

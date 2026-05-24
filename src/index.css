@@ -6,13 +6,99 @@
   font-family: "Inter", sans-serif;
 }
 
+html,
+body,
+#root{
+  min-height: 100%;
+}
 
-main{
+#root{
+  --footer-space: 280px;
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: var(--footer-space);
+}
+
+.site-footer{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.navbar .nav-link{
+  color: #555;
+  font-weight: 600;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active{
+  color: #000;
+}
+
+.navbar .nav-link.active{
+  position: relative;
+}
+
+.navbar .nav-link.active::after{
+  content: "";
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 0.25rem;
+  height: 2px;
+  background-color: #000;
+}
+
+.nav-cta{
+  min-width: 130px;
+}
+
+
+.home-main{
   background: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), url(./assets/img/home_img.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height:100vh;
+  min-height: 70vh;
+}
+
+
+.home-feature{
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.product-main{
+  background-color: #f8f9fa;
+  min-height: 70vh;
+}
+
+.product-card{
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+}
+
+.product-image{
+  height: 240px;
+  object-fit: contain;
+  padding: 24px;
+  background-color: #fff;
+}
+
+.product-description{
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .button{
@@ -23,4 +109,10 @@ main{
 .button:hover{
   background-color: black;
   color: white;
+}
+
+@media (max-width: 767px){
+  #root{
+    --footer-space: 520px;
+  }
 }
